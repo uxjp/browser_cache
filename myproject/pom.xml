@@ -20,6 +20,30 @@
           <target>17</target> <!-- Set the target version to 17 -->
         </configuration>
       </plugin>
+      <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <version>3.3.0</version> <!-- You can use the latest version of the plugin -->
+          <configuration>
+              <archive>
+                  <manifest>
+                      <mainClass>com.example.App</mainClass> <!-- Set the main class for the executable JAR -->
+                  </manifest>
+              </archive>
+              <descriptorRefs>
+                  <descriptorRef>jar-with-dependencies</descriptorRef>
+              </descriptorRefs>
+          </configuration>
+          <executions>
+              <execution>
+                  <id>make-assembly</id>
+                  <phase>package</phase>
+                  <goals>
+                      <goal>single</goal>
+                  </goals>
+              </execution>
+          </executions>
+      </plugin>
     </plugins>
   </build>
 
@@ -30,5 +54,17 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-core</artifactId>
+        <version>2.15.0</version> <!-- Replace with the desired version -->
+    </dependency>
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>2.15.2</version> <!-- Replace with the desired version -->
+    </dependency>
+
   </dependencies>
 </project>
